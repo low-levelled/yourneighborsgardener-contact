@@ -1,0 +1,12 @@
+{
+  "buildCommand": "npm install",
+  "env": {
+    "GMAIL_USER": "@gmail.com",
+    "GMAIL_PASS": "your-app-specific-password"
+  },
+  "functions": {
+    "api/**/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  }
+}

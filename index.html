@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Your Neighbor's Gardener</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        input[type="number"]:focus,
+        input[type="date"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        button {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .reset-btn {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .reset-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .success-message {
+            display: none;
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .error-message {
+            display: none;
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .required {
+            color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Get Your Garden Transformed</h1>
+        <p class="subtitle">Fill out the form below and we'll get back to you within 24 hours</p>
+
+        <div id="successMessage" class="success-message">
+            ✓ Thank you! We received your request. We'll contact you soon!
+        </div>
+
+        <div id="errorMessage" class="error-message">
+            ✗ Something went wrong. Please try again.
+        </div>
+
+        <form id="contactForm">
+            <!-- Name -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">First Name <span class="required">*</span></label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name <span class="required">*</span></label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">Email <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone <span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+            </div>
+
+            <!-- Address -->
+            <div class="form-group">
+                <label for="address">Address <span class="required">*</span></label>
+                <input type="text" id="address" name="address" placeholder="Street address" required>
+            </div>
+
+            <!-- Garden Info -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="gardenSize">Garden Size <span class="required">*</span></label>
+                    <select id="gardenSize" name="gardenSize" required>
+                        <option value="">Select size</option>
+                        <option value="small">Small (< 500 sq ft)</option>
+                        <option value="medium">Medium (500-1500 sq ft)</option>
+                        <option value="large">Large (1500-3000 sq ft)</option>
+                        <option value="xlarge">Extra Large (> 3000 sq ft)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="gardenType">Garden Type <span class="required">*</span></label>
+                    <select id="gardenType" name="gardenType" required>
+                        <option value="">Select type</option>
+                        <option value="full-sun">Full Sun</option>
+                        <option value="partial-shade">Partial Shade</option>
+                        <option value="full-shade">Full Shade</option>
+                        <option value="mixed">Mixed Light</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Plant Preferences -->
+            <div class="form-group">
+                <label for="plantPreferences">Plant Preferences & Notes</label>
+                <textarea id="plantPreferences" name="plantPreferences" placeholder="Tell us what you love! (flowers, vegetables, native plants, low-maintenance, etc.)"></textarea>
+            </div>
+
+            <!-- Budget & Timeline -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="budget">Budget Range</label>
+                    <select id="budget" name="budget">
+                        <option value="">Select range</option>
+                        <option value="under-1000">Under $1,000</option>
+                        <option value="1000-2500">$1,000 - $2,500</option>
+                        <option value="2500-5000">$2,500 - $5,000</option>
+                        <option value="5000-plus">$5,000+</option>
+                        <option value="not-sure">Not sure yet</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="availability">When do you want to start? <span class="required">*</span></label>
+                    <input type="date" id="availability" name="availability" required>
+                </div>
+            </div>
+
+            <!-- Service Type -->
+            <div class="form-group">
+                <label for="serviceType">Service Type <span class="required">*</span></label>
+                <select id="serviceType" name="serviceType" required>
+                    <option value="">Select service</option>
+                    <option value="maintenance">Garden Maintenance</option>
+                    <option value="design">Garden Design</option>
+                    <option value="installation">Garden Installation</option>
+                    <option value="landscaping">Landscaping</option>
+                    <option value="consultation">Consultation</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <!-- Additional Info -->
+            <div class="form-group">
+                <label for="additionalInfo">Anything else we should know?</label>
+                <textarea id="additionalInfo" name="additionalInfo" placeholder="Any other details about your project..."></textarea>
+            </div>
+
+            <!-- Buttons -->
+            <div class="button-group">
+                <button type="submit" class="submit-btn">Send Request</button>
+                <button type="reset" class="reset-btn">Clear Form</button>
+            </div>
+
+            <div class="loading" id="loading">
+                Sending your request...
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+        const loading = document.getElementById('loading');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Hide messages
+            successMessage.classList.remove('show');
+            errorMessage.classList.remove('show');
+            loading.classList.add('show');
+
+            // Collect form data
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                address: document.getElementById('address').value,
+                gardenSize: document.getElementById('gardenSize').value,
+                gardenType: document.getElementById('gardenType').value,
+                plantPreferences: document.getElementById('plantPreferences').value,
+                budget: document.getElementById('budget').value,
+                availability: document.getElementById('availability').value,
+                serviceType: document.getElementById('serviceType').value,
+                additionalInfo: document.getElementById('additionalInfo').value,
+            };
+
+            try {
+                // Send to backend API
+                const response = await fetch('/api/send-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                });
+
+                loading.classList.remove('show');
+
+                if (response.ok) {
+                    successMessage.classList.add('show');
+                    form.reset();
+                } else {
+                    errorMessage.classList.add('show');
+                }
+            } catch (error) {
+                loading.classList.remove('show');
+                errorMessage.classList.add('show');
+                console.error('Error:', error);
+            }
+        });
+    </script>
+</body>
+</html>

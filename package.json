@@ -1,0 +1,17 @@
+{
+  "name": "yourneighborsgardener-contact",
+  "version": "1.0.0",
+  "description": "Contact form for Your Neighbor's Gardener",
+  "main": "api/send-email.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "vercel build"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.7"
+  },
+  "devDependencies": {
+    "vercel": "^32.0.0"
+  }
+}

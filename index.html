@@ -190,7 +190,6 @@
 <body>
     <div class="container">
         <h1>Get Your Garden Transformed</h1>
-        <p class="subtitle">Fill out the form below and we'll get back to you within 24 hours</p>
 
         <div id="successMessage" class="success-message">
             ✓ Thank you! We received your request. We'll contact you soon!
@@ -232,27 +231,15 @@
             </div>
 
             <!-- Garden Info -->
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="gardenSize">Garden Size <span class="required">*</span></label>
-                    <select id="gardenSize" name="gardenSize" required>
-                        <option value="">Select size</option>
-                        <option value="small">Small (< 500 sq ft)</option>
-                        <option value="medium">Medium (500-1500 sq ft)</option>
-                        <option value="large">Large (1500-3000 sq ft)</option>
-                        <option value="xlarge">Extra Large (> 3000 sq ft)</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="gardenType">Garden Type <span class="required">*</span></label>
-                    <select id="gardenType" name="gardenType" required>
-                        <option value="">Select type</option>
-                        <option value="full-sun">Full Sun</option>
-                        <option value="partial-shade">Partial Shade</option>
-                        <option value="full-shade">Full Shade</option>
-                        <option value="mixed">Mixed Light</option>
-                    </select>
-                </div>
+            <div class="form-group">
+                <label for="gardenSize">Garden Size <span class="required">*</span></label>
+                <select id="gardenSize" name="gardenSize" required>
+                    <option value="">Select size</option>
+                    <option value="small">Small (< 500 sq ft)</option>
+                    <option value="medium">Medium (500-1500 sq ft)</option>
+                    <option value="large">Large (1500-3000 sq ft)</option>
+                    <option value="xlarge">Extra Large (> 3000 sq ft)</option>
+                </select>
             </div>
 
             <!-- Plant Preferences -->
@@ -334,7 +321,6 @@
                 phone: document.getElementById('phone').value,
                 address: document.getElementById('address').value,
                 gardenSize: document.getElementById('gardenSize').value,
-                gardenType: document.getElementById('gardenType').value,
                 plantPreferences: document.getElementById('plantPreferences').value,
                 budget: document.getElementById('budget').value,
                 availability: document.getElementById('availability').value,

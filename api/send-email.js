@@ -21,7 +21,6 @@ export default async function handler(req, res) {
             phone,
             address,
             gardenSize,
-            gardenType,
             plantPreferences,
             budget,
             availability,
@@ -56,7 +55,6 @@ Address: ${address}
 
 GARDEN DETAILS:
 Garden Size: ${gardenSize}
-Garden Type (Light): ${gardenType}
 Plant Preferences: ${plantPreferences || 'Not specified'}
 
 PROJECT DETAILS:
@@ -86,7 +84,7 @@ Respond to: ${email}
             from: process.env.GMAIL_USER,
             to: email,
             subject: 'We Received Your Garden Request',
-            text: `Hi ${firstName},\n\nThank you for contacting Your Neighbor's Gardener! We received your request and will be in touch within 24 hours.\n\nBest regards,\nYour Neighbor's Gardener`,
+            text: `Hi ${firstName},\n\nThank you for contacting Your Neighbor's Gardener! We received your request and will be in touch soon.\n\nBest regards,\nYour Neighbor's Gardener`,
         });
 
         return res.status(200).json({ success: true, message: 'Email sent successfully' });

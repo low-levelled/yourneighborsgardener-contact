@@ -1,0 +1,173 @@
+<!-- Your Neighbor's Gardener — consultation request form -->
+<!-- Paste this whole block into a WordPress "Custom HTML" block on the Contact page. -->
+
+<div id="yng-form">
+  <div class="yng-msg yng-ok" id="yngSuccess">✓ Thank you! We received your request. We'll be in touch soon.</div>
+  <div class="yng-msg yng-err" id="yngError">✗ Something went wrong. Please try again, or call us directly.</div>
+
+  <form id="yngContactForm" novalidate>
+    <div class="yng-row">
+      <div class="yng-group">
+        <label for="yngFirstName">First Name <span class="yng-req">*</span></label>
+        <input type="text" id="yngFirstName" name="firstName" autocomplete="given-name" required>
+      </div>
+      <div class="yng-group">
+        <label for="yngLastName">Last Name <span class="yng-req">*</span></label>
+        <input type="text" id="yngLastName" name="lastName" autocomplete="family-name" required>
+      </div>
+    </div>
+
+    <div class="yng-row">
+      <div class="yng-group">
+        <label for="yngEmail">Email <span class="yng-req">*</span></label>
+        <input type="email" id="yngEmail" name="email" autocomplete="email" required>
+      </div>
+      <div class="yng-group">
+        <label for="yngPhone">Phone <span class="yng-req">*</span></label>
+        <input type="tel" id="yngPhone" name="phone" autocomplete="tel" required>
+      </div>
+    </div>
+
+    <div class="yng-group">
+      <label for="yngAddress">Address <span class="yng-req">*</span></label>
+      <input type="text" id="yngAddress" name="address" placeholder="Street address" autocomplete="street-address" required>
+    </div>
+
+    <div>
+      <div class="yng-group">
+        <label for="yngGardenSize">Garden Size <span class="yng-req">*</span></label>
+        <select id="yngGardenSize" name="gardenSize" required>
+          <option value="">Select size</option>
+          <option value="small">Small (under 500 sq ft)</option>
+          <option value="medium">Medium (500–1500 sq ft)</option>
+          <option value="large">Large (1500–3000 sq ft)</option>
+          <option value="xlarge">Extra Large (3000+ sq ft)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="yng-group">
+      <label for="yngPlants">Plant Preferences &amp; Notes</label>
+      <textarea id="yngPlants" name="plantPreferences" placeholder="Tell us what you love! (flowers, vegetables, native plants, low-maintenance, etc.)"></textarea>
+    </div>
+
+    <div class="yng-row">
+      <div class="yng-group">
+        <label for="yngBudget">Budget Range</label>
+        <select id="yngBudget" name="budget">
+          <option value="">Select range</option>
+          <option value="under-1000">Under $1,000</option>
+          <option value="1000-2500">$1,000 – $2,500</option>
+          <option value="2500-5000">$2,500 – $5,000</option>
+          <option value="5000-plus">$5,000+</option>
+          <option value="not-sure">Not sure yet</option>
+        </select>
+      </div>
+      <div class="yng-group">
+        <label for="yngAvailability">When do you want to start? <span class="yng-req">*</span></label>
+        <input type="date" id="yngAvailability" name="availability" required>
+      </div>
+    </div>
+
+    <div class="yng-group">
+      <label for="yngServiceType">Service Type <span class="yng-req">*</span></label>
+      <select id="yngServiceType" name="serviceType" required>
+        <option value="">Select service</option>
+        <option value="maintenance">Garden Maintenance</option>
+        <option value="design">Garden Design</option>
+        <option value="installation">Garden Installation</option>
+        <option value="landscaping">Landscaping</option>
+        <option value="consultation">Consultation</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+
+    <div class="yng-group">
+      <label for="yngAdditional">Anything else we should know?</label>
+      <textarea id="yngAdditional" name="additionalInfo" placeholder="Any other details about your project..."></textarea>
+    </div>
+
+    <div class="yng-actions">
+      <button type="submit" class="yng-submit" id="yngSubmit">Send Request</button>
+      <button type="reset" class="yng-reset">Clear Form</button>
+    </div>
+  </form>
+</div>
+
+<style>
+#yng-form{max-width:680px;margin:0 auto;font-family:inherit;color:inherit;}
+#yng-form *,#yng-form *::before,#yng-form *::after{box-sizing:border-box;}
+#yng-form .yng-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media (max-width:600px){#yng-form .yng-row{grid-template-columns:1fr;}}
+#yng-form .yng-group{margin-bottom:18px;}
+#yng-form label{display:block;font-weight:600;font-size:14px;margin-bottom:6px;line-height:1.3;}
+#yng-form .yng-req{color:#c62828;}
+#yng-form input,#yng-form select,#yng-form textarea{
+  width:100%;padding:12px;border:1px solid #ccc;border-radius:6px;
+  font-size:16px;font-family:inherit;line-height:1.4;background:#fff;color:#222;
+  -webkit-appearance:none;appearance:none;transition:border-color .2s,box-shadow .2s;}
+#yng-form select{background-image:url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2'%3e%3cpath d='M6 9l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat:no-repeat;background-position:right 12px center;background-size:16px;padding-right:38px;}
+#yng-form textarea{min-height:110px;resize:vertical;}
+#yng-form input:focus,#yng-form select:focus,#yng-form textarea:focus{
+  outline:none;border-color:#3d7a34;box-shadow:0 0 0 3px rgba(61,122,52,.15);}
+#yng-form .yng-actions{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;}
+#yng-form button{flex:1 1 160px;padding:14px 20px;border:none;border-radius:6px;
+  font-size:16px;font-weight:600;font-family:inherit;cursor:pointer;transition:opacity .2s,background .2s;}
+#yng-form .yng-submit{background:#3d7a34;color:#fff;}
+#yng-form .yng-submit:hover{background:#33682c;}
+#yng-form .yng-submit:disabled{opacity:.6;cursor:not-allowed;}
+#yng-form .yng-reset{background:#eee;color:#333;}
+#yng-form .yng-reset:hover{background:#e0e0e0;}
+#yng-form .yng-msg{display:none;padding:14px 16px;border-radius:6px;margin-bottom:20px;
+  font-size:15px;line-height:1.4;}
+#yng-form .yng-msg.show{display:block;}
+#yng-form .yng-ok{background:#e5f4e3;border:1px solid #b6dcb0;color:#245c1d;}
+#yng-form .yng-err{background:#fdecea;border:1px solid #f5c2bd;color:#8c1d13;}
+</style>
+
+<script>
+(function(){
+  var API = 'https://yourneighborsgardener-contact.vercel.app/api/send-email';
+  var form = document.getElementById('yngContactForm');
+  var ok = document.getElementById('yngSuccess');
+  var err = document.getElementById('yngError');
+  var btn = document.getElementById('yngSubmit');
+  if (!form) return;
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+
+    ok.classList.remove('show');
+    err.classList.remove('show');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    var data = {};
+    ['firstName','lastName','email','phone','address','gardenSize',
+     'plantPreferences','budget','availability','serviceType','additionalInfo']
+      .forEach(function(k){ var el = form.elements[k]; data[k] = el ? el.value : ''; });
+
+    fetch(API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function(r){
+      btn.disabled = false;
+      btn.textContent = 'Send Request';
+      if (r.ok) {
+        ok.classList.add('show');
+        form.reset();
+        ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        err.classList.add('show');
+      }
+    }).catch(function(){
+      btn.disabled = false;
+      btn.textContent = 'Send Request';
+      err.classList.add('show');
+    });
+  });
+})();
+</script>

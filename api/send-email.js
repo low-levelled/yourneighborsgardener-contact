@@ -1,6 +1,13 @@
 import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
+    const _origin = req.headers.origin || '';
+    if (/^https:\/\/(www\.)?yourneighborsgardener\.com$/.test(_origin)) res.setHeader('Access-Control-Allow-Origin', _origin);
+    res.setHeader('Vary', 'Origin');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    if (req.method === 'OPTIONS') return res.status(204).end();
+    
     // Only allow POST requests
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });
